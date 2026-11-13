@@ -4,18 +4,33 @@
 </picture>
 
 <p align="center">
-  <a href="https://bakk0u.github.io/factoryguard/"><b>Explore FactoryGuard ↗</b></a> &nbsp; · &nbsp;
-  <a href="#selected-work">Selected work</a> &nbsp; · &nbsp;
-  <a href="mailto:anasbakkoury@gmail.com">Get in touch</a>
+  <a href="https://github.com/bakk0u/Financial-document-research-and-analysis"><b>Financial NLP</b></a> &nbsp; · &nbsp;
+  <a href="https://bakk0u.github.io/factoryguard/"><b>FactoryGuard demo ↗</b></a> &nbsp; · &nbsp;
+  <a href="https://www.linkedin.com/in/anas-bakkoury/">LinkedIn</a> &nbsp; · &nbsp;
+  <a href="mailto:anasbakkoury@gmail.com">Email</a>
 </p>
 
-I build AI/ML applications and evaluation pipelines, from industrial time series to LLM experiments. I care about what a model can demonstrate, how its results can be reproduced, and whether the application helps someone do useful work.
+I'm Anas, an **AI & Machine Learning master's student at TU Darmstadt**. I work mainly in Python, building models and the software around them: data pipelines, APIs and tools for inspecting results.
 
-Currently pursuing an **M.Sc. in AI & Machine Learning at TU Darmstadt**, with interests in applied ML, data engineering and financial technology.
+My recent work covers financial NLP, industrial time series and LLM evaluation. I like projects where I can follow a result back to the data and understand why a model got it right or wrong.
+
+**Based in Darmstadt, Germany · Available for internships in AI/ML and data engineering.**
 
 ## Selected work
 
-### FactoryGuard · Industrial machine monitoring
+### Financial Document Research & Analysis
+
+A local research tool for searching financial reports, checking source passages and analysing sentiment. It combines a FastAPI application with retrieval benchmarks and a DistilBERT model fine-tuned using LoRA.
+
+- **92.7% macro-F1**, compared with **83.8%** for TF-IDF + logistic regression, on 452 held-out Financial PhraseBank sentences. Near-duplicate sentences were grouped before splitting.
+- Search across **8,778 FinQA report passages**, with page-level citations and request logs.
+- Compared four retrieval methods on 162 report-separated test questions. BM25 had the highest Recall@5 point estimate at **65.0%**; the reranker reached 62.6%.
+
+**Python · PyTorch · Hugging Face · LoRA · FastAPI · BM25**
+
+[**View project ↗**](https://github.com/bakk0u/Financial-document-research-and-analysis) · [Evaluation](https://github.com/bakk0u/Financial-document-research-and-analysis/blob/main/reports/EVALUATION.md) · [Model card](https://github.com/bakk0u/Financial-document-research-and-analysis/blob/main/docs/MODEL_CARD.md)
+
+### FactoryGuard · Industrial time-series forecasting
 
 <a href="https://github.com/bakk0u/factoryguard">
   <picture>
@@ -24,24 +39,17 @@ Currently pursuing an **M.Sc. in AI & Machine Learning at TU Darmstadt**, with i
   </picture>
 </a>
 
-Investigate bearing vibration and temperature with forecasts, operating context, measurement warnings and downloadable reports. The dashboard presents real, precomputed laboratory results.
+A bearing-data investigation dashboard built around Paderborn University laboratory recordings. Forecasts sit alongside vibration, temperature and operating conditions so changes can be inspected in context.
 
-**Evidence:** the saved model-selection procedure reports **12.83% mean absolute error improvement** over persistence, averaged equally across runs/channels on B01/B02 development evaluations. This is a development result; held-out fault-detection performance has not been established.
+- Exponential smoothing reduced next-recorded-burst RMS forecast MAE by **12.8%** against persistence, averaged across channels and two development runs.
+- A Python/SQLite application brings together **2,607 recorded observations, forecasts and errors**.
+- Local monitoring alerts follow fixed rules. An optional TypeScript/MCP assistant retrieves sensor records to help investigate them.
+
+The public demo shows saved laboratory results. The forecasting score comes from development comparisons; fault-detection performance has not been established.
+
+**Python · pandas · scikit-learn · SQLite · TypeScript · MCP**
 
 [**Open dashboard ↗**](https://bakk0u.github.io/factoryguard/) · [Source](https://github.com/bakk0u/factoryguard) · [Model card](https://github.com/bakk0u/factoryguard/blob/master/docs/model_card.md)
-
-### Defendly · Adaptive interview preparation
-
-<a href="https://github.com/bakk0u/defendly">
-  <picture>
-    <source media="(max-width: 600px)" srcset="assets/defendly-mobile.svg">
-    <img src="assets/defendly.svg" width="100%" alt="Defendly — turn a CV into adaptive interview practice, answer evaluation and mastery tracking.">
-  </picture>
-</a>
-
-A full-stack application that extracts CV evidence, generates targeted questions and adapts practice to concept gaps. Includes saved interview sessions, WebSockets, structured validation and configurable local/cloud LLM providers.
-
-[**Explore the implementation ↗**](https://github.com/bakk0u/defendly) · FastAPI / React / TypeScript / SQLite / Docker
 
 ### LLM Graph Recovery · Bachelor thesis
 
@@ -52,57 +60,44 @@ A full-stack application that extracts CV evidence, generates targeted questions
   </picture>
 </a>
 
-Evaluated Llama 3.1 and DeepSeek-R1 across five prompt strategies for graph recovery from Tesla EV telemetry, with adjacency-matrix benchmarks and reproducible result artifacts.
+Can a language model recover relationships between vehicle telemetry signals? My thesis compared **Llama 3.1 8B and DeepSeek-R1 8B** across five prompting strategies on **65,261 Tesla EV telemetry records**.
 
-**Evidence:** best observed **F1 = 0.5333** across ten model–strategy cells. One validated output per cell makes this exploratory evidence; it does not establish repeated-run reliability or causal discovery.
+DeepSeek-R1 with skeleton-of-thought produced the best observed **F1 of 0.533**. The repository includes the prompts, outputs, graph comparisons and thesis source. With one output per setting, the results are exploratory.
 
-[**Read the research ↗**](https://github.com/bakk0u/llm-telematics-graph-recovery-thesis) · [Reproducibility guide](https://github.com/bakk0u/llm-telematics-graph-recovery-thesis/blob/main/REPRODUCIBILITY.md)
+**Python · Ollama · LLM evaluation · Graph analysis · LaTeX**
 
-### Adversarial Privacy · LLM evaluation
+[**Read the research ↗**](https://github.com/bakk0u/llm-telematics-graph-recovery-thesis) · [Reproduce the analysis](https://github.com/bakk0u/llm-telematics-graph-recovery-thesis/blob/main/REPRODUCIBILITY.md)
 
-<a href="https://github.com/bakk0u/adversarial-privacy-llm">
-  <picture>
-    <source media="(max-width: 600px)" srcset="assets/privacy-mobile.svg">
-    <img src="assets/privacy.svg" width="100%" alt="Adversarial Privacy — measure leakage on synthetic records with attack/defense comparisons and case-level evidence.">
-  </picture>
-</a>
+## Other projects
 
-A framework for comparing privacy leakage and task utility under adversarial prompts. It separates a **1,500-case mock experiment** from a **six-case local-model feasibility run**, with case-level outputs and explicit limits on interpretation.
+| Project | What I worked on |
+| :--- | :--- |
+| [Defendly](https://github.com/bakk0u/defendly) | Interview practice built with FastAPI, React and TypeScript, with saved sessions and configurable LLM providers. |
+| [Adversarial Privacy](https://github.com/bakk0u/adversarial-privacy-llm) | Privacy-leakage experiments with attack/defence comparisons; mock results and the small local-model trial are documented separately. |
+| [BiLSTM Stock Forecasting](https://github.com/bakk0u/bilstm-stock-forecasting) | Chronological and walk-forward evaluation on SPY returns. The model did not consistently beat the mean baseline. |
+| [Gercotronic website](https://bakk0u.github.io/gercotronic-preview/) | Web development from my software engineering internship. |
 
-[**Explore the framework ↗**](https://github.com/bakk0u/adversarial-privacy-llm) · [Real-model findings](https://github.com/bakk0u/adversarial-privacy-llm/blob/main/results/ollama_tiny_runs/findings.md)
-
-## More experiments & applications
-
-| Project | Focus | Takeaway |
-| :--- | :--- | :--- |
-| [BiLSTM Stock Forecasting](https://github.com/bakk0u/bilstm-stock-forecasting) | SPY forward returns, chronological splits and walk-forward evaluation. | The BiLSTM did not robustly beat the mean baseline. |
-| [Bremo AI Hire](https://github.com/bakk0u/bremo-ai-hire) | Hiring decision-support prototype with structured agent outputs and n8n orchestration. | Separates numerical scoring from generated explanations. |
-| [Gercotronic website](https://bakk0u.github.io/gercotronic-preview/) | Company website implementation. | [Browse the source](https://github.com/bakk0u/gercotronic-preview). |
-
-## Tools I work with
+## Tools I use
 
 | Area | Tools |
 | :--- | :--- |
-| AI & data | Python · PyTorch · scikit-learn · pandas · NumPy · Ollama |
-| Backend | FastAPI · REST APIs · JSON Schema · SQL · SQLite · MySQL |
-| Applications | React · TypeScript · JavaScript · Vite · n8n |
-| Workflow | Git · Docker · Jupyter · LaTeX |
+| Languages & data | Python, SQL, TypeScript/JavaScript, Java, pandas, NumPy |
+| Machine learning | PyTorch, scikit-learn, Hugging Face Transformers, PEFT/LoRA |
+| Applications | FastAPI, REST APIs, React, SQLite, MySQL, MCP |
+| Development | Git, GitHub Actions, Linux, pytest, Docker |
 
-## A little background
+## Background
 
-- **M.Sc. AI & Machine Learning** — TU Darmstadt
-- **B.Sc. Computer Science, minor in Data Science** — Constructor University
-- Former Software Engineering Intern at **Gercotronic GmbH** and **Colorado Group**
-- Arabic & French: native · English: fluent · German: A2
+**M.Sc. AI & Machine Learning**, TU Darmstadt · 2026–2028 (expected)  
+**B.Sc. Computer Science, Data Science minor**, Constructor University · 2023–2026
 
-My engineering approach: establish a baseline, validate the data, measure failure modes, and keep the experiment reproducible. A negative result is worth documenting when it changes what to build next.
+Previously a Software Engineering Intern at **Gercotronic GmbH** in Düsseldorf and **Colorado Group** in Casablanca, working on web applications, reporting and a Java fleet-management tool.
+
+Arabic and French: native · English: fluent · German: A2, learning.
 
 ---
 
-<p align="center">
-  <b>Let's talk AI, data and useful software.</b><br>
-  <a href="mailto:anasbakkoury@gmail.com">anasbakkoury@gmail.com</a> · <a href="https://github.com/bakk0u?tab=repositories">All repositories ↗</a>
-</p>
+[LinkedIn](https://www.linkedin.com/in/anas-bakkoury/) · [anasbakkoury@gmail.com](mailto:anasbakkoury@gmail.com) · [All repositories](https://github.com/bakk0u?tab=repositories)
 
 <!-- PARTY PARROTS -->
 <p align="center">
