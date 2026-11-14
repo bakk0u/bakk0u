@@ -8,6 +8,7 @@ image generation, or build service is required by the GitHub profile.
 
 - Header: wireframe sphere, three independent particle orbits, slow rotating mesh
   and a softly pulsing core. Your name and introduction remain stationary.
+- Financial Research: scanning report excerpts, travelling retrieval particles, progressive evidence lines and a pulsing citation badge; pink accent.
 - FactoryGuard: rotating bearing rollers, waveform reveal and sweeping scan.
 - Defendly: CV-to-conversation particles and progressively drawn answer lines.
 - Graph recovery: progressive connections, node pulses and matrix highlights.
