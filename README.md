@@ -20,6 +20,13 @@ My recent work covers financial NLP, industrial time series and LLM evaluation. 
 
 ### Financial Document Research & Analysis
 
+<a href="https://github.com/bakk0u/Financial-document-research-and-analysis">
+  <picture>
+    <source media="(max-width: 600px)" srcset="assets/financial-research-mobile.svg">
+    <img src="assets/financial-research.svg" width="100%" alt="Financial Document Research &amp; Analysis — animated report search, evidence retrieval and source citation workflow.">
+  </picture>
+</a>
+
 A local research tool for searching financial reports, checking source passages and analysing sentiment. It combines a FastAPI application with retrieval benchmarks and a DistilBERT model fine-tuned using LoRA.
 
 - **92.7% macro-F1**, compared with **83.8%** for TF-IDF + logistic regression, on 452 held-out Financial PhraseBank sentences. Near-duplicate sentences were grouped before splitting.

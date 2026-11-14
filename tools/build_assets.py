@@ -104,6 +104,7 @@ def hero(mobile=False):
  return shell(w,h,'Anas Bakkoury — Build with curiosity. Measure with rigor.',b)
 
 PROJECTS=[
+ ('financial-research','FINANCIAL NLP / RESEARCH','Financial Research',['Read the report.','Trace the evidence.'],'PyTorch / LoRA / FastAPI / Retrieval',PINK,'EXPLORE RESEARCH'),
  ('factoryguard','01 / INDUSTRIAL ML','FactoryGuard',['Bearing signals.','Clearer investigations.'],'Python / Time series / Model evaluation',ELECTRIC,'EXPLORE PROJECT'),
  ('defendly','02 / AI APPLICATIONS','Defendly',['From a CV to focused,','adaptive interview practice.'],'FastAPI / React / TypeScript',PINK,'EXPLORE PROJECT'),
  ('graph-recovery','03 / BACHELOR THESIS','LLM Graph Recovery',['Prompt strategies.','Measurable graph recovery.'],'Python / Ollama / Graph evaluation',ICE,'READ RESEARCH'),
@@ -169,7 +170,24 @@ def privacy(c):
   b+=pulse(rect(242,44+i*28,45 if i%2 else 62,12,c,3),6,i)
  b+=txt(0,204,'LEAKAGE EVALUATION / SCHEMATIC',8,MUTED,400,'class="mono"')
  return b
-ART={'factoryguard':bearing,'defendly':interview,'graph-recovery':graph,'privacy':privacy}
+def financial(c):
+ b=txt(0,10,'REPORT → RETRIEVE → CITE',10,MUTED,500,'class="mono"')
+ b+=rect(8,46,82,118,BG,7,LINE)+rect(18,36,82,118,BG,7,c)
+ b+=txt(30,57,'REPORT',9,MUTED,600,'class="mono"')
+ for i,w in enumerate([52,40,54,32]): b+=line(30,72+i*15,30+w,72+i*15,LINE,3)
+ b+=travel(rect(25,65,68,19,c,2,extra='opacity=".15"'),0,60,6)
+ b+=line(108,96,168,96,LINE,1.5)
+ for phase in [0,2,4]: b+=travel(circ(109,96,3,c),55,0,6,phase)
+ b+=rect(178,36,140,128,'#0c1426',9,LINE)
+ b+=txt(191,57,'SOURCE EVIDENCE',9,MUTED,500,'class="mono"')
+ for i,w in enumerate([98,79,92]):
+  y=77+i*22
+  b+=line(192,y,192+w,y,LINE,3)+draw(f'M192 {y} L{192+w} {y}',c,w,6,i*.7,3)
+ b+=pulse(rect(274,137,30,17,BG,4,c)+txt(280,149,'[1]',10,c,600),5)
+ b+=txt(0,200,'ILLUSTRATIVE DOCUMENT WORKFLOW',8,MUTED,400,'class="mono"')
+ return b
+
+ART={'financial-research':financial,'factoryguard':bearing,'defendly':interview,'graph-recovery':graph,'privacy':privacy}
 def card(p,mobile=False):
  key,label,title,copy,stack,c,cta=p
  w,h=(440,490) if mobile else (1000,300)
@@ -200,4 +218,4 @@ def build(out,time=None):
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--time',type=float);p.add_argument('--out',type=Path,default=ROOT/'assets');a=p.parse_args()
  build(a.out,a.time)
- print('Generated 10 self-contained SVGs.'+(' Motion enabled.' if a.time is None else f' Frame t={a.time}.'))
+ print(f'Generated {2*(len(PROJECTS)+1)} self-contained SVGs.'+(' Motion enabled.' if a.time is None else f' Frame t={a.time}.'))
