@@ -4,6 +4,7 @@
 </picture>
 
 <p align="center">
+  <a href="https://github.com/bakk0u/bakk0u/tree/main/projects/power-window"><b>Power Window</b></a> &nbsp; · &nbsp;
   <a href="https://github.com/bakk0u/Financial-document-research-and-analysis"><b>Financial NLP</b></a> &nbsp; · &nbsp;
   <a href="https://bakk0u.github.io/factoryguard/"><b>FactoryGuard demo ↗</b></a> &nbsp; · &nbsp;
   <a href="https://www.linkedin.com/in/anas-bakkoury/">LinkedIn</a> &nbsp; · &nbsp;
@@ -12,7 +13,7 @@
 
 I'm Anas, an **AI & Machine Learning master's student at TU Darmstadt**. I work mainly in Python, building models and the software around them: data pipelines, APIs and tools for inspecting results.
 
-My recent work covers financial NLP, industrial time series and LLM evaluation. I like projects where I can follow a result back to the data and understand why a model got it right or wrong.
+I like being able to trace a result back to its source, whether that’s a price interval, a passage in a financial report or a vibration reading from a bearing.
 
 **Based in Darmstadt, Germany · Available for internships in AI/ML and data engineering.**
 
@@ -20,9 +21,21 @@ My recent work covers financial NLP, industrial time series and LLM evaluation. 
 
 ### Power Window · Electricity price planner
 
-Pick a day, a duration and a power draw to find the cheapest available time to run an appliance on the German/Luxembourg wholesale market. The hosted app reads the price feed directly. The Databricks job keeps the original responses, merges corrected intervals into Delta tables and exposes SQL views for serving.
+<a href="https://github.com/bakk0u/bakk0u/tree/main/projects/power-window">
+  <picture>
+    <source media="(max-width: 600px)" srcset="assets/power-window-mobile.svg">
+    <img src="assets/power-window.svg" width="100%" alt="Power Window highlights the four consecutive quarter-hours with the lowest combined price in an illustrative day-ahead price chart.">
+  </picture>
+</a>
 
-[Source and setup](projects/power-window/) · [Databricks pipeline](projects/power-window/lakehouse/)
+When is the cheapest time to run the dishwasher? Power Window takes a run time and average power draw, checks the remaining quarter-hour prices in the Germany–Luxembourg market and estimates the wholesale cost. What you pay depends on your electricity tariff.
+
+- The hosted planner reads Energy-Charts through a Cloudflare Worker, with SMARD as a fallback. A gap in the price feed rules out any run that crosses it.
+- The Databricks pipeline keeps raw responses, merges price corrections into Delta Lake by delivery interval and exposes SQL views for price history and complete one-hour windows.
+
+**PySpark · Delta Lake · Databricks SQL · Lakeflow Jobs · JavaScript · Cloudflare Workers**
+
+[**Source and local setup ↗**](https://github.com/bakk0u/bakk0u/tree/main/projects/power-window) · [Databricks pipeline](https://github.com/bakk0u/bakk0u/tree/main/projects/power-window/lakehouse) · [Hosted planner (restricted access)](https://power-window-de.anas-bakkoury.chatgpt.site)
 
 ### Financial Document Research & Analysis
 
@@ -95,6 +108,7 @@ DeepSeek-R1 with skeleton-of-thought produced the best observed **F1 of 0.533**.
 | Area | Tools |
 | :--- | :--- |
 | Languages & data | Python, SQL, TypeScript/JavaScript, Java, pandas, NumPy |
+| Data engineering | PySpark, Delta Lake, Databricks SQL, Lakeflow Jobs |
 | Machine learning | PyTorch, scikit-learn, Hugging Face Transformers, PEFT/LoRA |
 | Applications | FastAPI, REST APIs, React, SQLite, MySQL, MCP |
 | Development | Git, GitHub Actions, Linux, pytest, Docker |
