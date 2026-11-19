@@ -3,6 +3,7 @@ const el=id=>document.getElementById(id);
 const format=(options)=>new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Berlin',...options});
 const clock=format({hour:'2-digit',minute:'2-digit'}), fullClock=format({hour:'2-digit',minute:'2-digit',timeZoneName:'shortOffset'});
 const delivery=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Berlin',year:'numeric',month:'2-digit',day:'2-digit'});
+const euros=new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR',minimumFractionDigits:3});
 const day=t=>delivery.format(t*1000);
 let data, rows=[],best;
 function draw(){
@@ -24,8 +25,14 @@ function render(){
   if(best){
     el('detail').textContent=fullClock.format(best.start*1000)+' to '+fullClock.format(best.end*1000)+' · '+date;
     const metrics=[[(best.average/10).toFixed(2)+' ct/kWh','Average market price']];
-    if(kw>0&&kw<=100)metrics.push([new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR',minimumFractionDigits:3}).format(best.average/1000*kw*mins/60),'Wholesale energy cost']);
-    else el('detail').textContent+=' · Enter power above 0 and up to 100 kW.';
+    const cost = kw * ((best.average / 1000) * (mins / 60));
+    if (!Number.isFinite(kw) || kw <= 0) {
+      el('detail').textContent += ' · Enter a positive power draw in kW.';
+    } else if (Number.isFinite(cost)) {
+      metrics.push([euros.format(cost), 'Wholesale energy cost']);
+    } else {
+      el('detail').textContent += ' · The cost is too large to display.';
+    }
     for(const [value,label] of metrics){const metric=document.createElement('div'),b=document.createElement('b');metric.className='metric';b.textContent=value;metric.append(b,label);el('metrics').append(metric);}
   }else el('detail').textContent='Try a shorter run or another published day.';
   el('rows').replaceChildren(...rows.map(r=>{const tr=document.createElement('tr');for(const v of [fullClock.format(r.start*1000),(r.price/10).toFixed(3)]){tr.insertCell().textContent=v;}return tr;}));
