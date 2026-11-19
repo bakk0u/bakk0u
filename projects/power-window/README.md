@@ -8,7 +8,7 @@ Use Node 22 or later. Run `npm test` followed by `npm run dev` and open http://l
 
 ## Backend
 
-The serving layer reads newly published prices from Energy-Charts. For ongoing analysis, the [Databricks bundle](lakehouse/README.md) ingests the same source into Delta tables. Its hourly job can be enabled after deployment. Use the gold interval view to switch the serving backend to Databricks SQL.
+The serving layer reads newly published prices from Energy-Charts and retries directly against SMARD quarter-hour data when the primary feed is unavailable. For ongoing analysis, the [Databricks bundle](lakehouse/README.md) ingests the same source into Delta tables. Its hourly job can be enabled after deployment. Use the gold interval view to switch the serving backend to Databricks SQL.
 
 | Server setting | Value |
 | --- | --- |

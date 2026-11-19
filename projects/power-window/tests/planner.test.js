@@ -14,3 +14,14 @@ test('warehouse rows use the same price contract as the public feed',async()=>{
     return Response.json({status:{state:'SUCCEEDED'},result:{data_array:[['0','-25.1'],['900','4.7']]}});
   });assert.deepEqual(saved.intervals,[{start:0,price:-25.1},{start:900,price:4.7}]);
 });
+test('primary feed outage reads actual quarter hours directly from SMARD', async()=>{
+  const timestamp=Date.UTC(2026,10,19)/1000;
+  const fetcher=async url=>{
+    if(url.includes('energy-charts')) return new Response(null,{status:503});
+    if(url.includes('index_quarterhour')) return Response.json({timestamps:[timestamp*1000-86400000]});
+    return Response.json({series:[[timestamp*1000,167.53],[(timestamp+900)*1000,null]]});
+  };
+  const data=await readPrices({},timestamp*1000,fetcher);
+  assert.equal(data.source,'SMARD');
+  assert.deepEqual(data.intervals,[{start:timestamp,price:167.53}]);
+});
