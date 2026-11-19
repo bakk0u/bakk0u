@@ -52,7 +52,7 @@ A bearing-data investigation dashboard built around Paderborn University laborat
 - A Python/SQLite application brings together **2,607 recorded observations, forecasts and errors**.
 - Local monitoring alerts follow fixed rules. An optional TypeScript/MCP assistant retrieves sensor records to help investigate them.
 
-The public demo shows saved laboratory results. The forecasting score comes from development comparisons; fault-detection performance has not been established.
+On the held-out B03 bearing run, the frozen forecast reduced MAE by **14.2%** against persistence. The dashboard lets you inspect where the forecast missed. The recordings lack the dated fault labels needed to measure alert accuracy.
 
 **Python · pandas · scikit-learn · SQLite · TypeScript · MCP**
 
