@@ -25,3 +25,19 @@ test('primary feed outage reads actual quarter hours directly from SMARD', async
   assert.equal(data.source,'SMARD');
   assert.deepEqual(data.intervals,[{start:timestamp,price:167.53}]);
 });
+
+test('power accepts decimal comma or point and up to two fractional digits', async () => {
+  const {parsePower} = await import('../web/planner.js');
+  for (const value of ['1000.25', '1000,25']) assert.equal(parsePower(value), 1000.25);
+  assert.equal(parsePower(',01'), 0.01);
+  for (const value of ['', '0', '-2', '1,000', '2.345', '1e3', '1.2,3', null])
+    assert.equal(parsePower(value), null);
+});
+
+test('finish time is inclusive and can rule out a cheaper late run', () => {
+  const rows = [50, 50, 0, 0].map((price,i)=>({start:i*900,price}));
+  const plan = deadline=>windowsFor(rows,30,0,'today',()=> 'today',deadline);
+  assert.equal(plan(3600)[0].start,1800);
+  assert.equal(plan(1800)[0].start,0);
+  assert.deepEqual(plan(1799),[]);
+});
