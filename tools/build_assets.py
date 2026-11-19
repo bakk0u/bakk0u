@@ -104,6 +104,7 @@ def hero(mobile=False):
  return shell(w,h,'Anas Bakkoury — Build with curiosity. Measure with rigor.',b)
 
 PROJECTS=[
+ ('power-window','ENERGY DATA / DAY-AHEAD MARKET','Power Window',['When should I run','the dishwasher?'],'PySpark / Delta Lake / SQL',YELLOW,'EXPLORE PLANNER'),
  ('financial-research','FINANCIAL NLP / RESEARCH','Financial Research',['Read the report.','Trace the evidence.'],'PyTorch / LoRA / FastAPI / Retrieval',PINK,'EXPLORE RESEARCH'),
  ('factoryguard','01 / INDUSTRIAL ML','FactoryGuard',['Bearing signals.','Clearer investigations.'],'Python / Time series / Model evaluation',ELECTRIC,'EXPLORE PROJECT'),
  ('defendly','02 / AI APPLICATIONS','Defendly',['From a CV to focused,','adaptive interview practice.'],'FastAPI / React / TypeScript',PINK,'EXPLORE PROJECT'),
@@ -187,7 +188,19 @@ def financial(c):
  b+=txt(0,200,'ILLUSTRATIVE DOCUMENT WORKFLOW',8,MUTED,400,'class="mono"')
  return b
 
-ART={'financial-research':financial,'factoryguard':bearing,'defendly':interview,'graph-recovery':graph,'privacy':privacy}
+def power_window(c):
+ b=txt(0,10,'DAY-AHEAD PRICES',10,MUTED,500,'class="mono"')
+ heights=[79,87,73,52,41,33,19,15,22,29,48,71,82,67,55,49]
+ for index,height in enumerate(heights):
+  x=4+19*index
+  b+=rect(x,136-height,13,height,c if 6<=index<10 else ICE,2)
+ b+=line(0,138,304,138)
+ b+=draw('M118 145 v7 h70 v-7',c,84,6,0,2)
+ b+=txt(70,177,'LOWEST-COST HOUR',10,c,600,'class="mono"')
+ b+=txt(0,200,'ILLUSTRATIVE QUARTER-HOUR PRICES',8,MUTED,400,'class="mono"')
+ return b
+
+ART={'power-window':power_window,'financial-research':financial,'factoryguard':bearing,'defendly':interview,'graph-recovery':graph,'privacy':privacy}
 def card(p,mobile=False):
  key,label,title,copy,stack,c,cta=p
  w,h=(440,490) if mobile else (1000,300)
