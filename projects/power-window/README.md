@@ -2,6 +2,8 @@
 
 Choose a delivery day, a run time and an average power draw. Power Window finds the cheapest continuous period still available in the German/Luxembourg day-ahead market and estimates its wholesale energy cost. It uses quarter-hour delivery intervals and displays Europe/Berlin time, including the UTC offset in the interval table.
 
+Choose a finish time to fit a run into your day. The planner compares the recommended window with the earliest feasible start on the same day. Power accepts up to two decimal places with a comma or a point, for example `1250,75`. Your browser remembers the last valid power and duration on this device. Euro estimates display to the nearest cent.
+
 ## Run the application
 
 Use Node 22 or later. Run `npm test` followed by `npm run dev` and open http://localhost:5173. No npm dependencies or API key are required for the market-feed mode. The deployed Worker serves the frontend and `GET /api/prices` from one origin. Successful price responses are cached for five minutes. A failed live refresh is labelled in the interface.
