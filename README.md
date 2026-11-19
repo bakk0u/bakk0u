@@ -18,6 +18,12 @@ My recent work covers financial NLP, industrial time series and LLM evaluation. 
 
 ## Selected work
 
+### Power Window · Electricity price planner
+
+Pick a day, a duration and a power draw to find the cheapest available time to run an appliance on the German/Luxembourg wholesale market. The hosted app reads the price feed directly. The Databricks job keeps the original responses, merges corrected intervals into Delta tables and exposes SQL views for serving.
+
+[Source and setup](projects/power-window/) · [Databricks pipeline](projects/power-window/lakehouse/)
+
 ### Financial Document Research & Analysis
 
 <a href="https://github.com/bakk0u/Financial-document-research-and-analysis">

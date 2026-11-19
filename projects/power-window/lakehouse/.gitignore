@@ -1,0 +1,6 @@
+__pycache__/
+.databricks/
+.venv/
+spark-warehouse/
+metastore_db/
+derby.log

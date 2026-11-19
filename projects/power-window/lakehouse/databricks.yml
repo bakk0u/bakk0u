@@ -1,0 +1,40 @@
+bundle:
+  name: power-window
+  databricks_cli_version: ">= 0.230.0"
+
+variables:
+  catalog:
+    description: Existing Unity Catalog catalog where the job may create a schema
+    default: main
+  schema:
+    description: Schema for market data
+    default: power_window
+  schedule_state:
+    description: Set to UNPAUSED to run the hourly refresh
+    default: PAUSED
+
+resources:
+  jobs:
+    refresh_prices:
+      name: Power Window market prices
+      max_concurrent_runs: 1
+      queue:
+        enabled: true
+      schedule:
+        quartz_cron_expression: "0 12 * * * ?"
+        timezone_id: Europe/Berlin
+        pause_status: ${var.schedule_state}
+      tasks:
+        - task_key: refresh
+          timeout_seconds: 600
+          max_retries: 2
+          min_retry_interval_millis: 120000
+          notebook_task:
+            notebook_path: ./src/refresh.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+
+targets:
+  prod:
+    default: true
