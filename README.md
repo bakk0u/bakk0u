@@ -18,6 +18,12 @@ My recent work covers financial NLP, industrial time series and LLM evaluation. 
 
 ## Selected work
 
+### Power Window · Electricity price planner
+
+Pick a day, a duration and a power draw to find the cheapest available time to run an appliance on the German/Luxembourg wholesale market. The hosted app reads the price feed directly. The Databricks job keeps the original responses, merges corrected intervals into Delta tables and exposes SQL views for serving.
+
+[Source and setup](projects/power-window/) · [Databricks pipeline](projects/power-window/lakehouse/)
+
 ### Financial Document Research & Analysis
 
 <a href="https://github.com/bakk0u/Financial-document-research-and-analysis">
@@ -52,7 +58,7 @@ A bearing-data investigation dashboard built around Paderborn University laborat
 - A Python/SQLite application brings together **2,607 recorded observations, forecasts and errors**.
 - Local monitoring alerts follow fixed rules. An optional TypeScript/MCP assistant retrieves sensor records to help investigate them.
 
-The public demo shows saved laboratory results. The forecasting score comes from development comparisons; fault-detection performance has not been established.
+On the held-out B03 bearing run, the frozen forecast reduced MAE by **14.2%** against persistence. The dashboard lets you inspect where the forecast missed. The recordings lack the dated fault labels needed to measure alert accuracy.
 
 **Python · pandas · scikit-learn · SQLite · TypeScript · MCP**
 
