@@ -65,15 +65,39 @@ export async function readPrices(env, now = Date.now(), fetcher = fetch) {
     intervals = normalize({unit:'EUR / MWh',license_info:'CC BY 4.0',unix_seconds:rows.map(r=>Number(r[0])),price:rows.map(r=>r[1]===null?null:Number(r[1]))});
     source = 'Databricks SQL';
   } else {
-    const url = 'https://api.energy-charts.info/price?'+new URLSearchParams({bzn:'DE-LU',start,end});
-    try {
-      intervals = normalize(await fetchJson(fetcher, url));
-      if (!intervals.some(x=>x.start+900>now/1000)) throw new Error('No current prices');
-      source = 'Energy-Charts';
-    } catch {
-      intervals = await smardPrices(fetcher, start, end);
-      source = 'SMARD';
+    const query = new URLSearchParams({bzn:'DE-LU',start,end});
+    const energyCharts = 'https://api.energy-charts.info';
+    const upstreamOptions = {cache:'no-store'};
+    const sources = [
+      ['Energy-Charts v2', async () => {
+        const payload = await fetchJson(fetcher, energyCharts+'/v2/price?'+query, upstreamOptions);
+        if (payload.bidding_zone !== 'DE-LU' || payload.interval_minutes !== 15 || !Array.isArray(payload.data)) {
+          throw new Error('Unexpected quarter-hour price feed');
+        }
+        return normalize({
+          unix_seconds: payload.data.map(row => Date.parse(row.timestamp)/1000),
+          price: payload.data.map(row => row.values?.day_ahead_price),
+          unit: payload.unit,
+          license_info: payload.license,
+        });
+      }],
+      ['Energy-Charts', async () =>
+        normalize(await fetchJson(fetcher, energyCharts+'/price?'+query, upstreamOptions))],
+      ['SMARD', () => smardPrices(fetcher, start, end)],
+    ];
+    const failures = [];
+    for (const [name, read] of sources) {
+      try {
+        const rows = await read();
+        if (!rows.some(row => row.start+900 > now/1000)) throw new Error('No current prices');
+        intervals = rows;
+        source = name;
+        break;
+      } catch (error) {
+        failures.push(name+': '+error.message);
+      }
     }
+    if (!intervals) throw new Error(failures.join('; '));
   }
   if (!intervals.some(x=>x.start+900>now/1000)) throw new Error('No current prices');
   return {intervals,source,checkedAt:new Date(now).toISOString()};
