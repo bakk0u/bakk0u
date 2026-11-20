@@ -41,3 +41,21 @@ test('finish time is inclusive and can rule out a cheaper late run', () => {
   assert.equal(plan(1800)[0].start,0);
   assert.deepEqual(plan(1799),[]);
 });
+
+test('the live Worker reads current quarter-hour v2 prices in Berlin time', async () => {
+  const now = Date.parse('2026-11-20T16:00:00+01:00');
+  const data = await readPrices({}, now, async (url, options) => {
+    assert.equal(new URL(url).pathname, '/v2/price');
+    assert.equal(new URL(url).searchParams.get('start'), '2026-11-20');
+    assert.equal(options.cache, 'no-store');
+    return Response.json({
+      bidding_zone: 'DE-LU', interval_minutes: 15, unit: 'EUR / MWh', license: 'CC BY 4.0',
+      data: [
+        {timestamp: '2026-11-20T16:15:00+01:00', values: {day_ahead_price: -15}},
+        {timestamp: '2026-11-20T16:30:00+01:00', values: {day_ahead_price: null}},
+      ],
+    });
+  });
+  assert.equal(data.source, 'Energy-Charts v2');
+  assert.deepEqual(data.intervals, [{start: now/1000+900, price: -15}]);
+});
