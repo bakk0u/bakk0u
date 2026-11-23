@@ -1,5 +1,7 @@
 # Power Window
 
+The public interactive demo is maintained in the [Power Window demo repository](https://github.com/bakk0u/Power-window). [Open the demo](https://bakk0u.github.io/Power-window/).
+
 Choose a delivery day, a run time and an average power draw. Power Window finds the cheapest continuous period still available in the German/Luxembourg day-ahead market and estimates its wholesale energy cost. It uses quarter-hour delivery intervals and displays Europe/Berlin time, including the UTC offset in the interval table.
 
 Choose a finish time to fit a run into your day. The planner compares the recommended window with the earliest feasible start on the same day. Power accepts up to two decimal places with a comma or a point, for example `1250,75`. Your browser remembers the last valid power and duration on this device. Euro estimates display to the nearest cent.
