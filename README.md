@@ -35,7 +35,7 @@ When is the cheapest time to run the dishwasher? Power Window takes a run time a
 
 **PySpark · Delta Lake · Databricks SQL · Lakeflow Jobs · JavaScript · Cloudflare Workers**
 
-[**Interactive demo ↗**](https://bakk0u.github.io/Power-window/) · [Demo repository](https://github.com/bakk0u/Power-window) · [**Source and local setup ↗**](https://github.com/bakk0u/bakk0u/tree/main/projects/power-window) · [Databricks pipeline](https://github.com/bakk0u/bakk0u/tree/main/projects/power-window/lakehouse) · [Hosted planner (restricted access)](https://power-window-de.anas-bakkoury.chatgpt.site)
+[**Interactive demo ↗**](https://bakk0u.github.io/Power-window/) · [Source and setup](https://github.com/bakk0u/Power-window) · [Databricks pipeline](https://github.com/bakk0u/Power-window/tree/main/lakehouse) · [Hosted planner (restricted access)](https://power-window-de.anas-bakkoury.chatgpt.site)
 
 ### Financial Document Research & Analysis
 
