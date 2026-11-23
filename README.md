@@ -4,7 +4,7 @@
 </picture>
 
 <p align="center">
-  <a href="https://github.com/bakk0u/bakk0u/tree/main/projects/power-window"><b>Power Window</b></a> &nbsp; · &nbsp;
+  <a href="https://github.com/bakk0u/Power-window"><b>Power Window</b></a> &nbsp; · &nbsp;
   <a href="https://github.com/bakk0u/Financial-document-research-and-analysis"><b>Financial NLP</b></a> &nbsp; · &nbsp;
   <a href="https://bakk0u.github.io/factoryguard/"><b>FactoryGuard demo ↗</b></a> &nbsp; · &nbsp;
   <a href="https://www.linkedin.com/in/anas-bakkoury/">LinkedIn</a> &nbsp; · &nbsp;
@@ -21,7 +21,7 @@ I like being able to trace a result back to its source, whether that’s a price
 
 ### Power Window · Electricity price planner
 
-<a href="https://github.com/bakk0u/bakk0u/tree/main/projects/power-window">
+<a href="https://github.com/bakk0u/Power-window">
   <picture>
     <source media="(max-width: 600px)" srcset="assets/power-window-mobile.svg">
     <img src="assets/power-window.svg" width="100%" alt="Power Window highlights the four consecutive quarter-hours with the lowest combined price in an illustrative day-ahead price chart.">
@@ -35,7 +35,7 @@ When is the cheapest time to run the dishwasher? Power Window takes a run time a
 
 **PySpark · Delta Lake · Databricks SQL · Lakeflow Jobs · JavaScript · Cloudflare Workers**
 
-[**Interactive demo ↗**](https://bakk0u.github.io/Power-window/) · [**Source and local setup ↗**](https://github.com/bakk0u/bakk0u/tree/main/projects/power-window) · [Databricks pipeline](https://github.com/bakk0u/bakk0u/tree/main/projects/power-window/lakehouse) · [Hosted planner (restricted access)](https://power-window-de.anas-bakkoury.chatgpt.site)
+[**Interactive demo ↗**](https://bakk0u.github.io/Power-window/) · [Demo repository](https://github.com/bakk0u/Power-window) · [**Source and local setup ↗**](https://github.com/bakk0u/bakk0u/tree/main/projects/power-window) · [Databricks pipeline](https://github.com/bakk0u/bakk0u/tree/main/projects/power-window/lakehouse) · [Hosted planner (restricted access)](https://power-window-de.anas-bakkoury.chatgpt.site)
 
 ### Financial Document Research & Analysis
 
